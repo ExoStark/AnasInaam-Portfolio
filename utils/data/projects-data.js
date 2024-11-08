@@ -28,7 +28,7 @@ export const projectsData = [
         id: 3,
         name: 'To-Do List app',
         description: '',
-        tools: ['React', 'Bootstrap', 'SCSS', 'Stripe', 'Express', 'TypeScript', 'MongoDB', 'Azure Blob', 'OpenAI API', 'Replicate AI', 'Cronjob', 'JWT'],
+        tools: ['React', 'Bootstrap', 'SCSS', 'Express', 'TypeScript', 'MongoDB',  'OpenAI API', 'Replicate AI', 'Cronjob'],
         code: '',
         role: 'Full Stack Developer',
         demo: '',
