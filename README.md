@@ -11,7 +11,7 @@
 
 # Demo :movie_camera:
 
-![](https://drive.google.com/file/d/1dDCrNwMWsLSay3Jzl8w0CoVQ_f6ZHD4J/view?usp=drive_link)
+![](.public/image/Screen-main.png)
 
 ## View live preview [here](https://sample-portfolio-eta.vercel.app/).
 
