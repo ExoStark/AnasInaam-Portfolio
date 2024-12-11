@@ -1,10 +1,5 @@
-<p align="center" width="100%">
-    <img height="100" src="https://github.com/said7388/developer-portfolio/assets/77630868/c0064908-cd5f-4751-a77c-eba90a62b55c">
-</p>
 
----
-
-# [Built Portfolio With GitHub ](https://github.com/said7388/github-portfolio)
+# [Built Portfolio With GitHub ](https://github.com/AnasInaam/AnasInaam-Portfolio)
 
 ---
 
@@ -16,9 +11,9 @@
 
 # Demo :movie_camera:
 
-![](./public/image/screen.png)
+![](https://drive.google.com/file/d/1dDCrNwMWsLSay3Jzl8w0CoVQ_f6ZHD4J/view?usp=drive_link)
 
-## View live preview [here](https://abusaid.netlify.app/).
+## View live preview [here](https://sample-portfolio-eta.vercel.app/).
 
 ---
 
@@ -114,28 +109,28 @@ GMAIL_PASSKEY =
 EMAIL_ADDRESS =
 ```
 
-### Then, Customize data in the `utils/data` [folder](https://github.com/said7388/developer-portfolio/tree/main/utils/data).
+### Then, Customize data in the `utils/data` [folder](https://github.com/AnasInaam/AnasInaam-Portfolio/tree/main/utils/data).
 
 Eg:
 
 ```javascript
 export const personalData = {
-  name: "ABU SAID",
-  profile: "/profile.png",
-  designation: "Full-Stack Software Developer",
-  description: "My name is ABU SAID....",
-  email: "abusaid7388@gmail.com",
-  phone: "+8801608797655",
-  address: "Dhaka, Bangladesh",
-  github: "https://github.com/said7388",
-  facebook: "https://www.facebook.com/abusaid.riyaz/",
-  linkedIn: "https://www.linkedin.com/in/abu-said-bd/",
-  twitter: "https://twitter.com/said7388",
-  stackOverflow: "https://stackoverflow.com/users/16840768/abu-said",
-  leetcode: "https://leetcode.com/said3812/",
-  devUsername: "said7388",
-  resume: "...",
-};
+  name: "Mohammad Anas",
+  profile: '/profile.png',
+  designation: "Computer Engineer",
+  description: "My name is Mohammad Anas. I am a professional and enthusiastic programmer in my daily life. I am a quick learner with a self-learning attitude. I love to learn and explore new technologies and am passionate about problem-solving. I love almost all the stacks of web application development and love to make the web more open to the world. My core skill is based on JavaScript and I love to do most of the things using JavaScript. I am available for any kind of job opportunity that suits my skills and interests.",
+  email: 'mirzaanas937@gmail.com',
+  phone: '+917517769519',
+  address: 'Dhule Maharashtra India',
+  github: 'https://github.com/AnasInaam',
+  facebook: 'https://www.facebook.com/AnasInaam/',
+  linkedIn: 'https://www.linkedin.com/in/mohammad-anas-458454257/',
+  twitter: 'https://twitter.com/AnasInaam',
+  stackOverflow: 'https://stackoverflow.com/users/28198564/mohammad-anas',
+  leetcode: "https://leetcode.com/u/Anasinaam/",
+  devUsername: "AnasInaam",
+  resume: "https://drive.google.com/file/d/1udMH7njjIb5OeSafosvC0VdIFDBvtE4M/view?usp=drive_link"
+}
 ```
 
 `devUsername` is used for fetching blog posts from `dev.to`.
