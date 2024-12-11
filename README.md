@@ -11,7 +11,7 @@
 
 # Demo :movie_camera:
 
-![](.public/image/Screen-main.png)
+public/image/Screen-main.png
 
 ## View live preview [here](https://sample-portfolio-eta.vercel.app/).
 
