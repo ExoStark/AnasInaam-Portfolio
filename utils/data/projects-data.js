@@ -1,3 +1,4 @@
+// Import images using proper Next.js static imports
 import ayla from '/public/image/ayla.jpg';
 import crefin from '/public/image/crefin.jpg';
 import realEstate from '/public/image/real-estate.jpg';
@@ -26,9 +27,9 @@ export const projectsData = [
     },
     {
         id: 3,
-        name: 'To-Do List app',
-        description: '',
-        tools: ['React', 'Bootstrap', 'SCSS', 'Express', 'TypeScript', 'MongoDB',  'OpenAI API', 'Replicate AI', 'Cronjob'],
+        name: 'AI-Powered To-Do List App',
+        description: 'A sophisticated task management application with AI-powered features. Built with React and TypeScript for the frontend, Express.js backend with MongoDB for data persistence. Integrated OpenAI API for smart task suggestions and categorization. Features include real-time updates, priority management, deadline reminders via cronjobs, and an intuitive Bootstrap-styled interface.',
+        tools: ['React', 'Bootstrap', 'SCSS', 'Express', 'TypeScript', 'MongoDB', 'OpenAI API', 'Replicate AI', 'Cronjob'],
         code: '',
         role: 'Full Stack Developer',
         demo: '',
@@ -36,13 +37,13 @@ export const projectsData = [
     },
     {
         id: 4,
-        name: 'Newsroom Management',
-        description: "My team and I developed a newspaper management dashboard application called Newsroom Management. As a front-end developer, I worked on creating the dashboard using NextJS, Material UI, Redux, Calendar, and other necessary npm libraries. We used React Redux to manage the application's state and React-hook-form and Sun Editor to handle forms.",
-        tools: [],
+        name: 'Newsroom Management Dashboard',
+        description: "A comprehensive newspaper management dashboard application developed with my team. As the lead front-end developer, I created an intuitive dashboard using NextJS and Material UI. The application features article management, editorial calendar integration, team collaboration tools, and real-time publishing workflows. Implemented Redux for state management and React-hook-form with Sun Editor for rich text editing capabilities.",
+        tools: ['NextJS', 'Material UI', 'Redux', 'Calendar', 'React Hook Form', 'Sun Editor', 'TypeScript'],
         code: '',
         demo: '',
         image: ayla,
-        role: '',
+        role: 'Lead Frontend Developer',
     }
 ];
 

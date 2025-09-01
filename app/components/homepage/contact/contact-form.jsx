@@ -7,7 +7,11 @@ import { TbMailForward } from "react-icons/tb";
 import { toast } from "react-toastify";
 
 function ContactForm() {
-  const [error, setError] = useState({ email: false, required: false });
+  const [error, setError] = useState({ 
+    email: false, 
+    required: false, 
+    network: false 
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [userInput, setUserInput] = useState({
     name: "",
@@ -21,33 +25,62 @@ function ContactForm() {
     }
   };
 
+  const validateForm = () => {
+    const newErrors = {
+      email: !isValidEmail(userInput.email),
+      required: !userInput.email || !userInput.message || !userInput.name,
+      network: false
+    };
+    setError(newErrors);
+    return !newErrors.email && !newErrors.required;
+  };
+
   const handleSendMail = async (e) => {
     e.preventDefault();
 
-    if (!userInput.email || !userInput.message || !userInput.name) {
-      setError({ ...error, required: true });
+    if (!validateForm()) {
+      toast.error("Please fill in all fields with valid information");
       return;
-    } else if (error.email) {
-      return;
-    } else {
-      setError({ ...error, required: false });
-    };
+    }
 
     try {
       setIsLoading(true);
+      setError({ ...error, network: false });
+      
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_APP_URL}/api/contact`,
-        userInput
+        userInput,
+        {
+          timeout: 10000, // 10 second timeout
+        }
       );
 
-      toast.success("Message sent successfully!");
-      setUserInput({
-        name: "",
-        email: "",
-        message: "",
-      });
+      if (res.data.success) {
+        toast.success("Message sent successfully! I'll get back to you soon.");
+        setUserInput({
+          name: "",
+          email: "",
+          message: "",
+        });
+        setError({ email: false, required: false, network: false });
+      } else {
+        toast.error(res.data.message || "Failed to send message");
+      }
     } catch (error) {
-      toast.error(error?.response?.data?.message);
+      console.error('Contact form error:', error);
+      setError({ ...error, network: true });
+      
+      if (error.code === 'ECONNABORTED') {
+        toast.error("Request timeout. Please check your internet connection and try again.");
+      } else if (error.response?.status === 400) {
+        toast.error("Invalid form data. Please check your inputs.");
+      } else if (error.response?.status === 500) {
+        toast.error("Server error. Please try again later or contact me directly.");
+      } else if (error.response?.data?.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Failed to send message. Please try again or contact me directly.");
+      }
     } finally {
       setIsLoading(false);
     };
@@ -103,9 +136,16 @@ function ContactForm() {
             />
           </div>
           <div className="flex flex-col items-center gap-3">
-            {error.required && <p className="text-sm text-red-400">
-              All fiels are required!
-            </p>}
+            {error.required && (
+              <p className="text-sm text-red-400">
+                All fields are required!
+              </p>
+            )}
+            {error.network && (
+              <p className="text-sm text-yellow-400">
+                Network error. Please check your connection and try again.
+              </p>
+            )}
             <button
               className="flex items-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-5 md:px-12 py-2.5 md:py-3 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold"
               role="button"

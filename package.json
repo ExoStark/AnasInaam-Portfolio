@@ -7,7 +7,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "setup": "node scripts/setup.js",
+    "type-check": "npx browserslist@latest --update-db",
+    "analyze": "ANALYZE=true npm run build"
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.1",

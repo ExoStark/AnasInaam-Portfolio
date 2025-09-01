@@ -9,17 +9,27 @@ import Projects from "./components/homepage/projects";
 import Skills from "./components/homepage/skills";
 
 async function getData() {
-  const res = await fetch(`https://dev.to/api/articles?username=${personalData.devUsername}`)
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
+  try {
+    const res = await fetch(`https://dev.to/api/articles?username=${personalData.devUsername}`, {
+      next: { revalidate: 3600 }, // Revalidate every hour
+    });
+    
+    if (!res.ok) {
+      console.error('Failed to fetch blog data:', res.status, res.statusText);
+      return []; // Return empty array instead of throwing error
+    }
+    
+    const data = await res.json();
+    const filtered = data
+      .filter((item) => item?.cover_image)
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 6); // Limit to 6 posts for performance
+    
+    return filtered;
+  } catch (error) {
+    console.error('Error fetching blog data:', error);
+    return []; // Return empty array on error
   }
-
-  const data = await res.json();
-
-  const filtered = data.filter((item) => item?.cover_image).sort(() => Math.random() - 0.5);
-
-  return filtered;
 };
 
 export default async function Home() {
