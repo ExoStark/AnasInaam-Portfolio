@@ -1,17 +1,50 @@
 // @flow strict
 
 import { personalData } from "@/utils/data/personal-data";
+import { blogPosts } from "@/utils/data/blog-posts";
 import BlogCard from "../components/homepage/blog/blog-card";
 
 async function getBlogs() {
-  const res = await fetch(`https://dev.to/api/articles?username=${personalData.devUsername}`)
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
+  try {
+    // Try to fetch from dev.to first
+    if (personalData.devUsername) {
+      const res = await fetch(`https://dev.to/api/articles?username=${personalData.devUsername}`, {
+        next: { revalidate: 3600 }, // Revalidate every hour
+      });
+      
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.length > 0) {
+          return data;
+        }
+      }
+    }
+    
+    // Fallback to local blog posts
+    return blogPosts.map(post => ({
+      id: post.id,
+      title: post.title,
+      description: post.excerpt,
+      cover_image: post.coverImage,
+      url: `/blog/${post.slug}`,
+      published_at: post.publishedAt,
+      reading_time_minutes: parseInt(post.readingTime),
+      tag_list: post.tags
+    }));
+  } catch (error) {
+    console.error('Error fetching blogs:', error);
+    // Return local blog posts as fallback
+    return blogPosts.map(post => ({
+      id: post.id,
+      title: post.title,
+      description: post.excerpt,
+      cover_image: post.coverImage,
+      url: `/blog/${post.slug}`,
+      published_at: post.publishedAt,
+      reading_time_minutes: parseInt(post.readingTime),
+      tag_list: post.tags
+    }));
   }
-
-  const data = await res.json();
-  return data;
 };
 
 async function page() {

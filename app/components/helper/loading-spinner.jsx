@@ -1,4 +1,8 @@
-const LoadingSpinner = ({ size = "md", className = "" }) => {
+// @flow strict
+
+import React from 'react';
+
+const LoadingSpinner = ({ size = "md", className = "", text = null }) => {
   const sizeClasses = {
     sm: "w-4 h-4",
     md: "w-8 h-8",
@@ -7,8 +11,16 @@ const LoadingSpinner = ({ size = "md", className = "" }) => {
   };
 
   return (
-    <div className={`flex items-center justify-center ${className}`}>
-      <div className={`${sizeClasses[size]} animate-spin rounded-full border-4 border-gray-300 border-t-[#16f2b3]`}></div>
+    <div className={`flex flex-col items-center justify-center space-y-4 ${className}`}>
+      <div className={`${sizeClasses[size]} relative`}>
+        <div className="absolute inset-0 rounded-full border-4 border-gray-600"></div>
+        <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#16f2b3] animate-spin"></div>
+      </div>
+      {text && (
+        <p className="text-gray-400 text-sm animate-pulse">
+          {text}
+        </p>
+      )}
     </div>
   );
 };
