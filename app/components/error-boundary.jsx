@@ -30,7 +30,7 @@ class ErrorBoundary extends React.Component {
             <div className="mb-8">
               <h1 className="text-4xl font-bold text-white mb-4">Oops! Something went wrong</h1>
               <p className="text-gray-400 mb-6">
-                We're sorry, but something unexpected happened. Please try refreshing the page.
+                We&apos;re sorry, but something unexpected happened. Please try refreshing the page.
               </p>
               <button
                 onClick={() => window.location.reload()}
