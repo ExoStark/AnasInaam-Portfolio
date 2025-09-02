@@ -22,7 +22,7 @@ export default function Home() {
               transition={{ delay: 0.2, duration: 0.8 }}
               className="text-5xl md:text-7xl font-bold mb-6 font-playfair"
             >
-              Hi, I'm{' '}
+              Hi, I&apos;m{' '}
               <span className="gradient-text">Anas Inaam</span>
             </motion.h1>
             
@@ -32,7 +32,7 @@ export default function Home() {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
             >
-              Full Stack Developer & Computer Engineer passionate about creating 
+              Full Stack Developer &amp; Computer Engineer passionate about creating 
               innovative digital experiences that make a difference.
             </motion.p>
 
